@@ -1,0 +1,24 @@
+:root {
+  --color-primary: #6ab0ff;
+  --color-primary-bg: #1c2b36;
+  --color-expense: #ff6b6b;
+  --color-expense-bg: #ff6b6b;
+  --color-expense-border: #803030;
+  --color-income: #5cf25c;
+  --color-bg: #0a0a0a;
+  --color-card-bg: #171717;
+  --color-card-inner: #000000;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #8c8c8c;
+  --color-border: #262626;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-primary: 0 0 20px rgba(106, 176, 255, 0.3);
+}

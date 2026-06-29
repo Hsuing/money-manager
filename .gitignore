@@ -1,0 +1,6 @@
+tmp_reference/
+.codex
+*.exe
+data/
+dist/
+node_modules/

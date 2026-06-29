@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GoORMHelperCache">
+    <option name="schemaMapping">
+      <map>
+        <entry key="APIController">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/handler/api.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Account">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/model/model.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Category">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/model/model.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Config">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/cmd/server/main.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="LoginRequest">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/handler/auth.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Response">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/pkg/response/response.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ScheduledTransaction">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/model/model.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="SystemSetting">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/model/model.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Template">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/model/model.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Transaction">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/model/model.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="TransactionType">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/model/model.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/model/model.go" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="scannedPathMapping">
+      <map>
+        <entry key="file://$PROJECT_DIR$/server/cmd/server/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782638122572" />
+              <option name="schema">
+                <list>
+                  <option value="Config" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/server/internal/handler/api.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782657671697" />
+              <option name="schema">
+                <list>
+                  <option value="APIController" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/server/internal/handler/auth.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782657590300" />
+              <option name="schema">
+                <list>
+                  <option value="LoginRequest" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/server/internal/handler/settings_api.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782657635164" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/server/internal/middleware/auth.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782642263421" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/server/internal/model/model.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782642197465" />
+              <option name="schema">
+                <list>
+                  <option value="Account" />
+                  <option value="Category" />
+                  <option value="Transaction" />
+                  <option value="Template" />
+                  <option value="ScheduledTransaction" />
+                  <option value="SystemSetting" />
+                  <option value="TransactionType" />
+                  <option value="User" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/server/internal/repo/repo.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782642236863" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/server/internal/router/router.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782642276901" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/server/pkg/jwt/jwt.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782642253249" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/server/pkg/response/response.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782657577207" />
+              <option name="schema">
+                <list>
+                  <option value="Response" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/test.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782654209465" />
+            </ScannedPath>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="tableStructMapping">
+      <map>
+        <entry key="account" value="Account" />
+        <entry key="api_controller" value="APIController" />
+        <entry key="category" value="Category" />
+        <entry key="config" value="Config" />
+        <entry key="login_request" value="LoginRequest" />
+        <entry key="response" value="Response" />
+        <entry key="scheduled_transaction" value="ScheduledTransaction" />
+        <entry key="system_setting" value="SystemSetting" />
+        <entry key="template" value="Template" />
+        <entry key="transaction" value="Transaction" />
+        <entry key="transaction_type" value="TransactionType" />
+        <entry key="user" value="User" />
+      </map>
+    </option>
+    <option name="lastTimeChecked" value="1782635955752" />
+  </component>
+</project>
