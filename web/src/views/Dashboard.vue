@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed, watch, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch, nextTick, onActivated, onDeactivated } from 'vue'
 import { useRouter } from 'vue-router'
 import { getDashboard, type DashboardData } from '../service/api'
 import * as echarts from 'echarts'
+import { ElMessage } from 'element-plus'
 
 const router = useRouter()
 
@@ -157,16 +158,35 @@ const closeYearPicker = (e: MouseEvent) => {
 onMounted(() => {
   loadDashboard()
   document.addEventListener('click', closeYearPicker)
-  window.addEventListener('resize', handleResize)
 })
+
+let isFirstMount = true
+onActivated(() => {
+  window.addEventListener('resize', handleResize)
+  if (!isFirstMount) {
+    loadDashboard()
+  }
+  isFirstMount = false
+  nextTick(() => {
+    trendChart?.resize()
+  })
+})
+
+onDeactivated(() => {
+  window.removeEventListener('resize', handleResize)
+})
+
 onUnmounted(() => {
   document.removeEventListener('click', closeYearPicker)
-  window.removeEventListener('resize', handleResize)
   if (trendChart) {
     trendChart.dispose()
     trendChart = null
   }
 })
+
+const handleAIClick = () => {
+  ElMessage.warning('该功能处于开发中')
+}
 
 const prevYear = () => {
   if (selectedYear.value > minYear) {
@@ -353,7 +373,7 @@ async function loadDashboard() {
     </div>
 
     <!-- 悬浮 AI 按钮 -->
-    <button class="fab-ai">AI</button>
+    <button class="fab-ai" @click="handleAIClick">AI</button>
 
     <!-- 标记说明 Modal -->
     <transition name="fade">
@@ -572,6 +592,7 @@ async function loadDashboard() {
 /* Chart Card */
 .chart-card {
   margin-bottom: 16px;
+  overflow: hidden;
 }
 .chart-header {
   text-align: center;
@@ -629,26 +650,28 @@ async function loadDashboard() {
   display: flex;
   align-items: center;
   background: var(--color-card-inner);
-  padding: 12px 16px;
+  padding: 12px 10px;
   border-radius: 12px;
-  gap: 12px;
+  gap: 8px;
 }
 .month-name {
   font-weight: 700;
-  font-size: 16px;
-  width: 40px;
+  font-size: 14px;
+  width: 36px;
+  white-space: nowrap;
 }
 .month-stats {
   display: flex;
   flex: 1;
-  gap: 12px;
+  gap: 6px;
   justify-content: flex-end;
   align-items: center;
 }
 .m-val {
-  font-size: 13px;
-  padding: 4px 8px;
+  font-size: 12px;
+  padding: 4px 6px;
   border-radius: 6px;
+  white-space: nowrap;
 }
 .m-income { color: var(--color-income); }
 .m-expense { 

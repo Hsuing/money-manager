@@ -114,21 +114,21 @@ const cancelLogout = () => {
         </button>
       </div>
     </div>
-  </div>
 
-  <!-- 退出确认弹窗 -->
-  <transition name="fade">
-    <div class="modal-overlay" v-if="showLogoutConfirm" @click.self="cancelLogout">
-      <div class="confirm-modal">
-        <h3 class="confirm-title">退出登录</h3>
-        <p class="confirm-desc">确定要退出登录吗？</p>
-        <div class="confirm-actions">
-          <button class="btn-cancel" @click="cancelLogout">取消</button>
-          <button class="btn-confirm" @click="confirmLogout">确认</button>
+    <!-- 退出确认弹窗 -->
+    <transition name="fade">
+      <div class="modal-overlay" v-if="showLogoutConfirm" @click.self="cancelLogout">
+        <div class="confirm-modal">
+          <h3 class="confirm-title">退出登录</h3>
+          <p class="confirm-desc">确定要退出登录吗？</p>
+          <div class="confirm-actions">
+            <button class="btn-cancel" @click="cancelLogout">取消</button>
+            <button class="btn-confirm" @click="confirmLogout">确认</button>
+          </div>
         </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <style scoped>

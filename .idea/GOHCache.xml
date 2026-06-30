@@ -38,6 +38,13 @@
             </set>
           </value>
         </entry>
+        <entry key="RegisterRequest">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/server/internal/handler/auth.go" />
+            </set>
+          </value>
+        </entry>
         <entry key="Response">
           <value>
             <set>
@@ -106,7 +113,7 @@
         <entry key="file://$PROJECT_DIR$/server/internal/handler/api.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1782657671697" />
+              <option name="lastModified" value="1782714953154" />
               <option name="schema">
                 <list>
                   <option value="APIController" />
@@ -118,19 +125,27 @@
         <entry key="file://$PROJECT_DIR$/server/internal/handler/auth.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1782657590300" />
+              <option name="lastModified" value="1782715775814" />
               <option name="schema">
                 <list>
                   <option value="LoginRequest" />
+                  <option value="RegisterRequest" />
                 </list>
               </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/server/internal/handler/captcha.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1782715626142" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/server/internal/handler/settings_api.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1782657635164" />
+              <option name="lastModified" value="1782714953154" />
             </ScannedPath>
           </value>
         </entry>
@@ -144,7 +159,7 @@
         <entry key="file://$PROJECT_DIR$/server/internal/model/model.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1782642197465" />
+              <option name="lastModified" value="1782714638560" />
               <option name="schema">
                 <list>
                   <option value="Account" />
@@ -163,14 +178,14 @@
         <entry key="file://$PROJECT_DIR$/server/internal/repo/repo.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1782642236863" />
+              <option name="lastModified" value="1782714644851" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/server/internal/router/router.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1782642276901" />
+              <option name="lastModified" value="1782715350742" />
             </ScannedPath>
           </value>
         </entry>
@@ -193,13 +208,6 @@
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/test.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1782654209465" />
-            </ScannedPath>
-          </value>
-        </entry>
       </map>
     </option>
     <option name="tableStructMapping">
@@ -209,6 +217,7 @@
         <entry key="category" value="Category" />
         <entry key="config" value="Config" />
         <entry key="login_request" value="LoginRequest" />
+        <entry key="register_request" value="RegisterRequest" />
         <entry key="response" value="Response" />
         <entry key="scheduled_transaction" value="ScheduledTransaction" />
         <entry key="system_setting" value="SystemSetting" />
@@ -218,6 +227,6 @@
         <entry key="user" value="User" />
       </map>
     </option>
-    <option name="lastTimeChecked" value="1782635955752" />
+    <option name="lastTimeChecked" value="1782783187561" />
   </component>
 </project>

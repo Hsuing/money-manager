@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, onActivated } from 'vue'
 import { getTransactions, addTransaction, deleteTransaction, getTransactionTypes, type Transaction, type TransactionType } from '../service/api'
 import AddTransaction from '../components/AddTransaction.vue'
 
@@ -75,6 +75,14 @@ const closePicker = (e: MouseEvent) => {
 onMounted(() => {
   loadData()
   document.addEventListener('click', closePicker)
+})
+
+let isFirstMount = true
+onActivated(() => {
+  if (!isFirstMount) {
+    loadData()
+  }
+  isFirstMount = false
 })
 onUnmounted(() => {
   document.removeEventListener('click', closePicker)
@@ -510,7 +518,7 @@ const cancelDelete = () => {
 .t-row:hover {
   background-color: rgba(128, 128, 128, 0.15);
 }
-.t-row:last-child {
+.date-group:last-child .t-row:last-child {
   border-bottom: none;
 }
 .td-date { width: 60px; color: #666; }

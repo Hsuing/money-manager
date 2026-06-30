@@ -9,9 +9,13 @@ const route = useRoute()
 <template>
   <el-config-provider :locale="zhCn">
     <div class="app-background"></div>
-    <div :class="['page-container', { 'login-page': route.name === 'Login' }]">
+    <div :class="['page-container', { 'login-page': route.name === 'Login' }]" style="position: relative;">
       <router-view v-slot="{ Component }">
-        <component :is="Component" />
+        <transition name="page">
+          <keep-alive>
+            <component :is="Component" :key="route.path" />
+          </keep-alive>
+        </transition>
       </router-view>
     </div>
     <BottomNav v-if="route.name !== 'Login'" />
@@ -19,5 +23,25 @@ const route = useRoute()
 </template>
 
 <style>
-/* Global styles for App.vue if needed in future */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.15s ease;
+}
+.page-leave-active {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+}
+@media screen and (max-width: 600px) {
+  .page-leave-active {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
 </style>

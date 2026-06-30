@@ -64,7 +64,7 @@ export interface TransactionType {
 
 // 创建 axios 实例
 const api = axios.create({
-  baseURL: 'http://localhost:8081/api', // 后端地址
+  baseURL: '/api', // 后端地址，由 vite.config.ts 代理
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json'

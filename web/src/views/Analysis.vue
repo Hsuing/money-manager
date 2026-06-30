@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed, watch, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch, nextTick, onActivated, onDeactivated } from 'vue'
 import { useRouter } from 'vue-router'
 import { getTransactions, getTransactionTypes, type Transaction, type TransactionType } from '../service/api'
 import * as echarts from 'echarts'
@@ -201,8 +201,7 @@ watch([analysisData, viewMode], () => {
   })
 }, { deep: true })
 
-onMounted(async () => {
-  window.addEventListener('resize', handleResize)
+const loadData = async () => {
   isLoading.value = true
   try {
     const [data, types] = await Promise.all([getTransactions(), getTransactionTypes()])
@@ -213,10 +212,29 @@ onMounted(async () => {
   } finally {
     isLoading.value = false
   }
+}
+
+onMounted(() => {
+  loadData()
+})
+
+let isFirstMount = true
+onActivated(() => {
+  window.addEventListener('resize', handleResize)
+  if (!isFirstMount) {
+    loadData()
+  }
+  isFirstMount = false
+  nextTick(() => {
+    pieChart?.resize()
+  })
+})
+
+onDeactivated(() => {
+  window.removeEventListener('resize', handleResize)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', handleResize)
   if (pieChart) {
     pieChart.dispose()
     pieChart = null
@@ -402,6 +420,7 @@ onUnmounted(() => {
 .chart-container {
   padding: 16px;
   margin-top: 16px;
+  overflow: hidden;
 }
 .pie-chart {
   width: 100%;
@@ -410,14 +429,9 @@ onUnmounted(() => {
 
 .filter-scroll {
   display: flex;
-  overflow-x: auto;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
   padding: 4px 0;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-.filter-scroll::-webkit-scrollbar {
-  display: none;
 }
 .filter-chip {
   white-space: nowrap;
