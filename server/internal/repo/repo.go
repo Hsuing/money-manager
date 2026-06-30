@@ -27,9 +27,9 @@ func SeedData(db *gorm.DB) {
 	// Seed Admin User
 	db.Model(&model.User{}).Count(&count)
 	if count == 0 {
-		hash, _ := bcrypt.GenerateFromPassword([]byte("123456"), bcrypt.DefaultCost)
+		hash, _ := bcrypt.GenerateFromPassword([]byte("hx13231228792"), bcrypt.DefaultCost)
 		db.Create(&model.User{
-			Username:     "admin",
+			Username:     "hanusers",
 			PasswordHash: string(hash),
 		})
 	}

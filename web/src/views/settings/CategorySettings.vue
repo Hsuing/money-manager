@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { getCategories, addCategory, updateCategory, deleteCategory, getTransactionTypes } from '../../service/api'
+import { getCategories, addCategory, updateCategory, getTransactionTypes } from '../../service/api'
 
 const router = useRouter()
 

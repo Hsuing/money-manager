@@ -12,7 +12,7 @@ const monthBalance = ref(0)
 
 const currentMonthStr = computed(() => `${selectedYear.value}年${selectedMonth.value}月`)
 
-const transactions = ref<Transaction[]>([])
+const transactions = ref<any[]>([])
 const tTypes = ref<TransactionType[]>([])
 const isLoading = ref(true)
 
@@ -37,10 +37,6 @@ const nextMonth = () => {
   }
   loadData()
 }
-const isCurrentMonth = computed(() => {
-  const n = new Date()
-  return selectedYear.value === n.getFullYear() && selectedMonth.value === n.getMonth() + 1
-})
 
 // 日期选择器
 const showPicker = ref(false)
@@ -50,9 +46,6 @@ const monthNames = ['1月','2月','3月','4月','5月','6月','7月','8月','9�
 const openPicker = () => {
   pickerYear.value = selectedYear.value
   showPicker.value = true
-}
-const pickerYearNext = () => {
-  if (pickerYear.value < new Date().getFullYear()) pickerYear.value++
 }
 const selectMonthYear = (m: number) => {
   selectedYear.value = pickerYear.value
@@ -192,10 +185,12 @@ const handleDelete = (id: number) => {
 const executeDelete = async () => {
   if (deleteTargetId.value === null) return
   try {
-    await deleteTransaction(deleteTargetId.value)
-    await loadData()
+    const id = deleteTargetId.value
     showDeleteConfirm.value = false
     deleteTargetId.value = null
+    
+    await deleteTransaction(id)
+    await loadData()
   } catch (e) {
     console.error('Failed to delete transaction', e)
   }
@@ -475,7 +470,7 @@ const cancelDelete = () => {
 
 /* Table View */
 .transaction-table {
-  background: white;
+  background: var(--color-card-bg);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -485,10 +480,10 @@ const cancelDelete = () => {
 .t-header {
   display: flex;
   padding: 12px 16px;
-  border-bottom: 1px solid #e8e8e8;
-  color: #888;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
   font-weight: bold;
-  background: white;
+  background: var(--color-card-bg);
 }
 .th-date { width: 60px; }
 .th-cat { flex: 1; }
@@ -502,32 +497,32 @@ const cancelDelete = () => {
   flex-direction: column;
 }
 .group-header {
-  background: #f5f5f5;
+  background: var(--color-card-inner);
   padding: 8px 16px;
   font-weight: bold;
-  color: #666;
+  color: var(--color-text-secondary);
   font-size: 13px;
 }
 .t-row {
   display: flex;
   padding: 16px;
   align-items: center;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-border);
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 .t-row:hover {
-  background-color: rgba(128, 128, 128, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 .date-group:last-child .t-row:last-child {
   border-bottom: none;
 }
-.td-date { width: 60px; color: #666; }
-.td-cat { flex: 1; color: #333; }
-.td-acc { flex: 1; color: #888; }
-.td-remark { flex: 1.5; color: #888; }
+.td-date { width: 60px; color: var(--color-text-secondary); }
+.td-cat { flex: 1; color: var(--color-text-primary); }
+.td-acc { flex: 1; color: var(--color-text-secondary); }
+.td-remark { flex: 1.5; color: var(--color-text-secondary); }
 .td-amount { width: 100px; text-align: right; font-weight: bold; font-size: 15px; }
-.td-amount.income { color: #4ade80; }
-.td-amount.expense { color: #f87171; }
+.td-amount.income { color: var(--color-income); }
+.td-amount.expense { color: var(--color-expense); }
 
 .td-actions {
   width: 80px;
@@ -539,19 +534,19 @@ const cancelDelete = () => {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1px solid #ddd;
-  background: white;
+  border: 1px solid var(--color-border);
+  background: var(--color-card-inner);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 14px;
-  color: #888;
+  color: var(--color-text-secondary);
 }
 .btn-del {
-  border-color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.3);
   color: #ef4444;
-  background: #fef2f2;
+  background: rgba(239, 68, 68, 0.1);
 }
 .action-btn:hover {
   filter: brightness(0.95);
@@ -581,36 +576,6 @@ const cancelDelete = () => {
   transform: scale(1.05);
 }
 
-/* Add dark mode support for table */
-@media (prefers-color-scheme: dark) {
-  .transaction-table {
-    background: #1c1c1e;
-  }
-  .t-header {
-    background: #1c1c1e;
-    border-bottom: 1px solid #333;
-  }
-  .group-header {
-    background: #242426;
-    color: #aaa;
-  }
-  .t-row {
-    border-bottom: 1px solid #333;
-  }
-  .t-row:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-  .td-cat { color: #eee; }
-  .td-amount.expense { color: #ef4444; }
-  .action-btn {
-    background: #2a2a2c;
-    border-color: #444;
-  }
-  .btn-del {
-    background: rgba(239, 68, 68, 0.1);
-    border-color: rgba(239, 68, 68, 0.3);
-  }
-}
 
 /* Mobile Layout */
 @media (max-width: 768px) {

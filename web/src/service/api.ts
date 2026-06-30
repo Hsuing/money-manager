@@ -64,7 +64,7 @@ export interface TransactionType {
 
 // 创建 axios 实例
 const api = axios.create({
-  baseURL: '/api', // 后端地址，由 vite.config.ts 代理
+  baseURL: import.meta.env.VITE_API_BASE_URL, // 后端地址，从环境变量读取
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json'
@@ -111,26 +111,26 @@ api.interceptors.response.use(
   }
 )
 
-export const login = (data: any) => api.post('/login', data)
-export const register = (data: any) => api.post('/register', data)
-export const getCaptcha = () => api.get('/captcha')
-export const getDashboard = (year?: number) => api.get('/dashboard', { params: { year, _t: Date.now() } })
-export const getTransactions = (year?: number, month?: number) => 
+export const login = (data: any): Promise<any> => api.post('/login', data)
+export const register = (data: any): Promise<any> => api.post('/register', data)
+export const getCaptcha = (): Promise<any> => api.get('/captcha')
+export const getDashboard = (year?: number): Promise<any> => api.get('/dashboard', { params: { year, _t: Date.now() } })
+export const getTransactions = (year?: number, month?: number): Promise<any> => 
   api.get('/transactions', { params: { year, month } })
-export const addTransaction = (data: any) => api.post('/transactions', data)
-export const deleteTransaction = (id: string|number) => api.delete(`/transactions/${id}`)
-export const getCategories = () => api.get('/categories')
-export const addCategory = (data: any) => api.post('/categories', data)
-export const updateCategory = (id: string|number, data: any) => api.put(`/categories/${id}`, data)
-export const deleteCategory = (id: string|number) => api.delete(`/categories/${id}`)
-export const getAccounts = () => api.get('/accounts')
-export const addAccount = (data: any) => api.post('/accounts', data)
-export const updateAccount = (id: string, data: any) => api.put(`/accounts/${id}`, data)
-export const deleteAccount = (id: string) => api.delete(`/accounts/${id}`)
+export const addTransaction = (data: any): Promise<any> => api.post('/transactions', data)
+export const deleteTransaction = (id: string|number): Promise<any> => api.delete(`/transactions/${id}`)
+export const getCategories = (): Promise<any> => api.get('/categories')
+export const addCategory = (data: any): Promise<any> => api.post('/categories', data)
+export const updateCategory = (id: string|number, data: any): Promise<any> => api.put(`/categories/${id}`, data)
+export const deleteCategory = (id: string|number): Promise<any> => api.delete(`/categories/${id}`)
+export const getAccounts = (): Promise<any> => api.get('/accounts')
+export const addAccount = (data: any): Promise<any> => api.post('/accounts', data)
+export const updateAccount = (id: string|number, data: any): Promise<any> => api.put(`/accounts/${id}`, data)
+export const deleteAccount = (id: string|number): Promise<any> => api.delete(`/accounts/${id}`)
 
-export const getTransactionTypes = () => api.get('/transaction_types')
-export const addTransactionType = (data: any) => api.post('/transaction_types', data)
-export const updateTransactionType = (id: string|number, data: any) => api.put(`/transaction_types/${id}`, data)
-export const deleteTransactionType = (id: string|number) => api.delete(`/transaction_types/${id}`)
+export const getTransactionTypes = (): Promise<any> => api.get('/transaction_types')
+export const addTransactionType = (data: any): Promise<any> => api.post('/transaction_types', data)
+export const updateTransactionType = (id: string|number, data: any): Promise<any> => api.put(`/transaction_types/${id}`, data)
+export const deleteTransactionType = (id: string|number): Promise<any> => api.delete(`/transaction_types/${id}`)
 
 export default api

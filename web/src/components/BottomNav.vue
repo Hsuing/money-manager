@@ -29,7 +29,7 @@ const activeIndex = computed(() => {
       </div>
 
       <router-link
-        v-for="(item, index) in navItems"
+        v-for="item in navItems"
         :key="item.path"
         :to="item.path"
         class="nav-item"
